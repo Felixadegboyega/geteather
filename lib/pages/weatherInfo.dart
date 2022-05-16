@@ -99,14 +99,14 @@ class _WeatherinfoState extends State<Weatherinfo> {
               style: TextStyle(fontSize: 15),
               textAlign: TextAlign.center,
             ),
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    getWeather();
-                    reLoading = true;
-                  });
-                },
-                child: Text('Retry'))
+            // TextButton(
+            //     onPressed: () {
+            //       setState(() {
+            //         getWeather();
+            //         reLoading = true;
+            //       });
+            //     },
+            //     child: Text('Retry'))
           ],
         ),
       );
@@ -144,7 +144,7 @@ class _WeatherinfoState extends State<Weatherinfo> {
     );
   }
 
-  Future getWeather() async {
+  Future<Map<String, dynamic>> getWeather() async {
     var weather;
     Uri url = Uri.parse(
         'https://community-open-weather-map.p.rapidapi.com/weather?q=${widget.locationName}');
@@ -161,9 +161,9 @@ class _WeatherinfoState extends State<Weatherinfo> {
       print(e);
       weather = {'networkError': true};
     }
-    setState(() {
-      reLoading = false;
-    });
+    // setState(() {
+    //   reLoading = false;
+    // });
     return weather;
   }
 }
